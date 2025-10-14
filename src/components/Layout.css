@@ -1,0 +1,126 @@
+.home-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/*sidebar = Menu lateral*/
+.sidebar {
+    width: 250px;
+    background-color: #bdbdbd;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.sidebar-header img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.sidebar-header h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.sidebar-header p {
+    font-size: 14px;
+    margin: 0;
+    color: #0c394b;
+    font-weight: bold;
+}
+
+.menu-btn {
+    background: none;
+    font-weight: bold;
+    border: none;
+    color: #131313;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+.menu-btn-sair {
+    background-color: #db4444;
+    border: none;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+}
+
+
+.menu-btn:hover {
+    background-color: rgba(122, 122, 122, 0.795);
+}
+.menu-btn-sair:hover {
+    background-color: rgba(155, 18, 18, 0.89);
+}
+
+.menu-btn .submenu-indicator {
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.menu-btn .submenu-indicator.open {
+    transform: rotate(90deg);
+}
+
+/* Submenu */
+.submenu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.submenu-btn {
+    background: none;
+    border: none;
+    color: #252525;
+    text-align: left;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.submenu-btn:hover {
+    background-color: rgba(122, 122, 122, 0.795);
+}
+
+/*Área principal da página*/
+.home-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ebeaeaf3;
+    overflow-y: auto;
+}

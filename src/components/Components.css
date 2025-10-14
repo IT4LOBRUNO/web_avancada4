@@ -1,0 +1,95 @@
+/*Geral*/
+input, button {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/*Campos de Input*/
+.input-field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #0c394b;
+}
+
+/*Barra de busca*/
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #0c394b;
+}
+
+/*Responsável/Aluno*/
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #fff;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.card p {
+  margin: 4px 0;
+}
+
+.card-buttons {
+  margin-top: 10px;
+}
+
+.card-buttons button {
+  margin-right: 10px;
+}
+
+/*Botão*/
+.app-button {
+  background-color: #0c394b;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.app-button:hover {
+  background-color: #145670;
+}
+
+/*Carregamento*/
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  font-style: italic;
+}
