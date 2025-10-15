@@ -5,6 +5,7 @@ import { db } from "../firebase/firebaseConfig";
 import SearchBar from "../components/SearchBar";
 import ResponsavelCard from "../components/ResponsavelCard";
 import Button from "../components/Button";
+import { downloadBase64File } from "../components/DownloadHelper";
 import "../components/Components.css";
 
 export default function ResponsaveisBusca() {
@@ -25,13 +26,17 @@ export default function ResponsaveisBusca() {
         where("cpf", "==", busca)
       );
 
-      const [snapshotNome, snapshotCpf] = await Promise.all([getDocs(qNome), getDocs(qCpf)]);
+      const [snapshotNome, snapshotCpf] = await Promise.all([
+        getDocs(qNome),
+        getDocs(qCpf),
+      ]);
 
       const lista = [
         ...snapshotNome.docs.map((doc) => ({ id: doc.id, ...doc.data() })),
         ...snapshotCpf.docs.map((doc) => ({ id: doc.id, ...doc.data() })),
       ];
 
+      // remove duplicados
       const unicos = Array.from(new Map(lista.map((r) => [r.id, r])).values());
       setResultados(unicos);
     } catch (error) {
@@ -39,19 +44,15 @@ export default function ResponsaveisBusca() {
     }
   };
 
-  const downloadFile = (base64, filename) => {
-    if (!base64) return alert("Arquivo não disponível");
-    const link = document.createElement("a");
-    link.href = base64;
-    link.download = filename;
-    link.click();
-  };
-
   return (
     <Layout>
       <h1>Buscar Responsável</h1>
 
-      <SearchBar placeholder="Digite nome ou CPF" value={busca} onChange={setBusca} />
+      <SearchBar
+        placeholder="Digite nome ou CPF"
+        value={busca}
+        onChange={setBusca}
+      />
 
       <div style={{ marginTop: 12 }}>
         <Button onClick={handleBuscar}>Buscar</Button>
@@ -63,10 +64,13 @@ export default function ResponsaveisBusca() {
             <ResponsavelCard
               key={resp.id}
               responsavel={resp}
-              onDownloadComprovante={() => downloadFile(resp.comprovante, "comprovante.pdf")}
-              onDownloadRgCnh={() => downloadFile(resp.rgCnh, "rgcnh.pdf")}
+              onDownloadComprovante={() =>
+                downloadBase64File(resp.comprovante, "comprovante.pdf")
+              }
+              onDownloadRgCnh={() =>
+                downloadBase64File(resp.rgCnh, "rgcnh.pdf")
+              }
             />
-
           ))}
         </div>
       )}
