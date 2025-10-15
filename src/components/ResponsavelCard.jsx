@@ -8,6 +8,8 @@ export default function ResponsavelCard({ responsavel, onDownloadComprovante, on
       <p><strong>CPF:</strong> {responsavel.cpf}</p>
       <p><strong>Telefone:</strong> {responsavel.telefone}</p>
       <p><strong>Endereço:</strong> {responsavel.endereco}</p>
+      <p><strong>Email:</strong> {responsavel.email}</p>
+
 
       <div className="card-buttons">
         {onDownloadComprovante && (

@@ -69,24 +69,29 @@ export default function Login() {
       <div className="login-box">
         <div className="login-logo">
           <img src={logo} alt="Logo" />
-          <h1>Creche Estrela do Oriente</h1>
+          <h2>Creche Estrela do Oriente</h2>
         </div>
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="username@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
           type="password"
           placeholder="Senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
+        <div className="reset-link-container">
+          <span className="reset-link" onClick={handleReset}>
+            Esqueceu a senha?
+          </span>
+        </div>
 
         <button onClick={handleLogin}>Login</button>
-        <button onClick={handleReset}>Recuperar senha</button>
       </div>
     </div>
   );

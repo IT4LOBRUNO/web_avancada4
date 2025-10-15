@@ -1,4 +1,3 @@
-// src/components/FileUploader.jsx
 import React, { useState } from "react";
 import "./Components.css";
 

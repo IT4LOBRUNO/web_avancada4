@@ -8,10 +8,12 @@ import logo from "../assets/logo.png";
 
 export default function Layout({ children }) {
   const [userName, setUserName] = useState("");
-  const [showResponsaveis, setShowResponsaveis] = useState(false);
+  const [showCadastro, setShowCadastro] = useState(false);
+  const [showBusca, setShowBusca] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Carrega nome do usuário
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -33,14 +35,24 @@ export default function Layout({ children }) {
     navigate("/");
   };
 
+  // Mantém submenu aberto conforme rota atual
   useEffect(() => {
-    if (location.pathname.startsWith("/buscar-") || location.pathname.startsWith("/cadastrar-")) {
-      if (
-        location.pathname.includes("responsavel") ||
-        location.pathname.includes("aluno")
-      ) {
-        setShowResponsaveis(true);
-      }
+    if (
+      location.pathname.includes("/cadastrar-aluno") ||
+      location.pathname.includes("/cadastrar-responsavel")
+    ) {
+      setShowCadastro(true);
+    } else {
+      setShowCadastro(false);
+    }
+
+    if (
+      location.pathname.includes("/buscar-aluno") ||
+      location.pathname.includes("/buscar-responsavel")
+    ) {
+      setShowBusca(true);
+    } else {
+      setShowBusca(false);
     }
   }, [location.pathname]);
 
@@ -50,7 +62,6 @@ export default function Layout({ children }) {
         <div className="sidebar-header">
           <img src={logo} alt="Logo" />
           <div>
-            <h2>Creche Estrela do Oriente</h2>
             <p>{userName}</p>
           </div>
         </div>
@@ -59,29 +70,44 @@ export default function Layout({ children }) {
           Início
         </button>
 
-        {/* Submenu Ensino */}
+        {/* Aba Cadastro */}
         <button
           className="menu-btn"
-          onClick={() => setShowResponsaveis(!showResponsaveis)}
+          onClick={() => setShowCadastro(!showCadastro)}
         >
-          <span className={`submenu-indicator ${showResponsaveis ? "open" : ""}`}>
+          <span className={`submenu-indicator ${showCadastro ? "open" : ""}`}>
             &gt;
           </span>
-          Ensino
+          Cadastro
         </button>
-        {showResponsaveis && (
+        {showCadastro && (
+          <div className="submenu">
+            <button className="submenu-btn" onClick={() => navigate("/cadastrar-aluno")}>
+              Cadastro Aluno
+            </button>
+            <button className="submenu-btn" onClick={() => navigate("/cadastrar-responsavel")}>
+              Cadastro Responsável
+            </button>
+          </div>
+        )}
+
+        {/* Aba Busca */}
+        <button
+          className="menu-btn"
+          onClick={() => setShowBusca(!showBusca)}
+        >
+          <span className={`submenu-indicator ${showBusca ? "open" : ""}`}>
+            &gt;
+          </span>
+          Busca
+        </button>
+        {showBusca && (
           <div className="submenu">
             <button className="submenu-btn" onClick={() => navigate("/buscar-aluno")}>
               Buscar Aluno
             </button>
-            <button className="submenu-btn" onClick={() => navigate("/cadastrar-aluno")}>
-              Cadastrar Aluno
-            </button>
             <button className="submenu-btn" onClick={() => navigate("/buscar-responsavel")}>
               Buscar Responsável
-            </button>
-            <button className="submenu-btn" onClick={() => navigate("/cadastrar-responsavel")}>
-              Cadastrar Responsável
             </button>
           </div>
         )}

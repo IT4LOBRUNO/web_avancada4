@@ -11,6 +11,7 @@ export default function ResponsaveisCriacao() {
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
+    email: "",        // novo campo email
     telefone: "",
     endereco: "",
     comprovante: null,
@@ -27,8 +28,8 @@ export default function ResponsaveisCriacao() {
   };
 
   const handleSalvar = async () => {
-    const { nome, cpf, telefone, endereco, comprovante, rgCnh } = form;
-    if (!nome || !cpf || !telefone || !endereco)
+    const { nome, cpf, email, telefone, endereco, comprovante, rgCnh } = form;
+    if (!nome || !cpf || !email || !telefone || !endereco)
       return alert("Preencha todos os campos obrigatórios");
 
     try {
@@ -38,6 +39,7 @@ export default function ResponsaveisCriacao() {
       await addDoc(collection(db, "responsaveis"), {
         nome,
         cpf,
+        email,           // salva email
         telefone,
         endereco,
         comprovante: base64Comprovante,
@@ -49,6 +51,7 @@ export default function ResponsaveisCriacao() {
       setForm({
         nome: "",
         cpf: "",
+        email: "",      // reseta email
         telefone: "",
         endereco: "",
         comprovante: null,
@@ -65,6 +68,7 @@ export default function ResponsaveisCriacao() {
 
       <InputField label="Nome" value={form.nome} onChange={(v) => setForm({ ...form, nome: v })} />
       <InputField label="CPF" value={form.cpf} onChange={(v) => setForm({ ...form, cpf: v })} />
+      <InputField label="Email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} /> {/* novo input */}
       <InputField label="Telefone" value={form.telefone} onChange={(v) => setForm({ ...form, telefone: v })} />
       <InputField label="Endereço" value={form.endereco} onChange={(v) => setForm({ ...form, endereco: v })} />
 

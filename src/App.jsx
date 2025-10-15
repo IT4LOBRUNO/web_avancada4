@@ -8,21 +8,29 @@ import ResponsaveisCriacao from "./responsaveis/ResponsaveisCriacao.jsx";
 import AlunoBuscar from "./alunos/AlunoBuscar.jsx";
 import AlunoCadastrar from "./alunos/AlunoCadastrar.jsx";
 import AlunoFormulario from "./alunos/AlunoFormulario.jsx";
+import FormularioDocumentos from "./alunos/FormularioDocumentos.jsx";
+import FormularioSocioEconomico from "./alunos/FormularioSocioEconomico.jsx";
+import FormularioConclusao from "./alunos/FormularioConclusao.jsx";
+import AlunoPerfil from "./alunos/AlunoPerfil.jsx";
 
 export default function App() {
   return (
     <Routes>
-      {/*Autenticação*/}
+      {/* Autenticação */}
       <Route path="/" element={<Login />} />
       <Route path="/criar-conta" element={<CriarConta />} />
       <Route path="/home" element={<Home />} />
 
-      {/*Alunos*/}
+      {/* Alunos */}
       <Route path="/buscar-aluno" element={<AlunoBuscar />} />
       <Route path="/cadastrar-aluno" element={<AlunoCadastrar />} />
       <Route path="/cadastrar-aluno/:responsavelId" element={<AlunoFormulario />} />
+      <Route path="/alunos/formulario-documentos" element={<FormularioDocumentos />} />
+      <Route path="/alunos/formulario-socio-economico" element={<FormularioSocioEconomico />} />
+      <Route path="/alunos/formulario-conclusao" element={<FormularioConclusao />} />
+      <Route path="/aluno-perfil/:id" element={<AlunoPerfil />} />
 
-      {/*Responsáveis*/}
+      {/* Responsáveis */}
       <Route path="/buscar-responsavel" element={<ResponsaveisBusca />} />
       <Route path="/cadastrar-responsavel" element={<ResponsaveisCriacao />} />
     </Routes>

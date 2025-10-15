@@ -93,3 +93,21 @@ input, button {
   color: #333;
   font-style: italic;
 }
+
+.form-section {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-header h1 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  color: #003465;
+}
+
+.form-header p {
+  margin-bottom: 16px;
+  color: #333;
+  font-weight: bold;
+}
